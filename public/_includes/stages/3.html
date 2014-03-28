@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img height="100" class="myAvatar" src="/img/spinner.gif" />
+    </div>
+    <div class="col-md-6">
+      There are <strong><span id="membersCount">x</span></strong> other people here with you.
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form id="messageForm" name="messageForm" action="#">
+        <input type="text" style="width:80%" name="message" id="message"> <a href="javascript:app.sendMessage()">[ send ]</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+        <h2>Chat:</h2>
+        <div class="server_info" id="actions">
+          <div class="chatBox" id="chatBox">...</div>
+        </div>
+
+      </div>
+  </div>
+</div>
+
+<script>
+  $('#messageForm').submit(function(event){
+    event.preventDefault();
+    app.sendMessage();
+    return false;
+  });
+</script>

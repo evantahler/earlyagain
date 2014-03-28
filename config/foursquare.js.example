@@ -1,0 +1,8 @@
+exports.default = { 
+  foursquare: function(api){
+    return {
+      id: 'XXX',
+      secret: 'XXX',
+    }
+  }
+}

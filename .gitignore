@@ -1,0 +1,6 @@
+log/*
+pids/*
+node_modules
+config/foursquare.js
+.DS_Store
+npm-debug.log
