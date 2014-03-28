@@ -1,10 +1,14 @@
 {
-  "author": "YOU <YOU@example.com>",
-  "name": "my_actionhero_project",
-  "description": "my actionhero project",
+  "author": "Evan Tahler <evantahler@gmail.com>",
+  "name": "earlyAgain",
+  "description": "Early Again",
   "version": "0.0.1",
   "engines": {
     "node": ">=0.8.0"
+  },
+  "repositories": {
+    "type": "git",
+    "url": "git@github.com:evantahler/earlyagain.git"
   },
   "dependencies": {
     "actionhero": "8.0.3",
