@@ -58,7 +58,7 @@
       <div class="col-lg-6">
         <h1>EarlyAgain</h1>
         <h2>Pass the time with your new freinds</h2> 
-        <h2>This is You -> </h2> 
+        <h2><strong>This is You -> </strong></h2> 
       </div><!-- /col-lg-6 -->
       <div class="col-lg-6">
         <img height="300" class="myAvatar" src="/img/spinner.gif" onclick="app.chageStage(2)"/>  
@@ -76,7 +76,7 @@
       <h3>Are you the only one of your friends who knows how a clock works?</h3>
       <h3>Did you actually get to the airport 2 hours before your scheduled departure?</h3>
       <h3>Does your punctuality often leave you bored?</h3>
-      <h1>Use Early Again to annonomusly chat with other people in the same place... in the same prediciment</h1>
+      <h1>Use Early Again to anonymously chat with other people in the same place.</h1>
 
       <button type="submit" class="btn btn-info btn-lg" onclick="app.chageStage(2)">Lets Go!</button>
 
@@ -89,20 +89,21 @@
   <h1>EarlyAgain is an example <a href="http://actionherojs.com">actionhero</a> project</h1>
   <h3>Built With:</h3>
   <ul>
-    <li>actionhero</li>
-    <li>nodejs</li>
-    <li>foursquare</li>
-    <li>jekyll</li>
-    <li>bootstrap</li>
-    <li>jquery</li>
-    <li>Theme created by BlackTie.co</li>
+    <li><a href="http://actionherojs.com">actionhero</a></li>
+    <li><a href="http://nodejs.org/">nodejs</a></li>
+    <li><a href="http://robohash.org/">robohash</a></a></li>
+    <li><a href="https://developer.foursquare.com/overview/venues">foursquare venue API</a></li>
+    <li><a href="http://jekyllrb.com/">jekyll</a></li>
+    <li><a href="http://getbootstrap.com/">bootstrap</a></li>
+    <li><a href="http://jquery.com/">jquery</a></li>
+    <li><a href="http://www.blacktie.co/2013/12/flatty-app-landing-page/">Theme created by BlackTie.co</a></li>
   </ul>
-  <h3>Check it out on <a href="'">github</a></h3>
+  <h3>Check out the source on <a href="https://github.com/evantahler/earlyagain">github</a></h3>
 </div></div>
 <div class="stageContainer" id="stage2" style="display: none;"><div class="container">
   <div class="row">
     <h1>Where Are You?</h1>
-    <div id="locationsList">
+    <div id="venuesList">
       <p>Loading nearby places...</p>
       <img src="/img/spinner.gif" width="200"/>
     </div>
@@ -114,6 +115,7 @@
       <img height="100" class="myAvatar" src="/img/spinner.gif" />
     </div>
     <div class="col-md-6">
+      Talking abount <span id="venueName">X</span><br />
       There are <strong><span id="membersCount">x</span></strong> other people here with you.
     </div>
   </div>

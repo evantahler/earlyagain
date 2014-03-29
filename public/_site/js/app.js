@@ -7,35 +7,6 @@ $( document ).ready(function() {
 app.events = {};
 app.timers = {};
 
-app.on = function(event, callback){
-  var self = this;
-  if(self.events[event] == null){
-    self.events[event] = {};
-  }
-  var key = self.randomString();
-  self.events[event][key] = callback;
-  return key;
-}
-
-app.emit = function(event, data){
-  var self = this;
-  if(self.events[event] != null){
-    for(var i in self.events[event]){
-      self.events[event][i](data);
-    }
-  }
-}
-
-app.randomString = function(){
-  var seed = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for( var i=0; i < 32; i++ ){
-    seed += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  seed += '-' + new Date().getTime();
-  return seed
-}
-
 app.QueryString = function(){
   var query_string = {};
   var query = window.location.search.substring(1);
@@ -90,7 +61,7 @@ app.chageStage = function(stage){
   $('.stageContainer').hide();
   $('#stage' + stage).fadeIn();
   window.location.hash = "#" + stage;
-  app.emit('stage', stage);
+  app.stageChanged(stage);
 }
 
 app.avatars = {};
@@ -112,23 +83,22 @@ app.getLocation = function(callback){
   }
 }
 
-app.startChat = function(locationId){
-  app.locationId = locationId;
+app.startChat = function(venueId){
+  app.venueId = venueId;
   app.chageStage(3);
-  app.client.action('roomAdd', {locationId: app.locationId}, function(data){
+  app.client.action('roomAdd', {venueId: app.venueId}, function(data){
     app.joinChat();
   });
 }
 
-app.joinChat = function(locationId){
-  if(app.QueryString()['locationId'] == null){
+app.joinChat = function(venueId){
+  if(app.QueryString()['venueId'] == null){
     var parts = window.location.href;
-    var url = parts.split("#")[0] + "?locationId=" + app.locationId + "#3";
+    var url = parts.split("#")[0] + "?venueId=" + app.venueId + "#3";
     window.history.pushState("", "", url);
-  }else{
-    app.client.roomChange(app.locationId);
-    app.roomDetails();
   }
+  app.client.roomChange(app.venueId);
+  app.roomDetails();
 }
 
 app.sendMessage = function(){
@@ -152,6 +122,9 @@ app.roomDetails = function(){
     if(details.data != null){
       var others = parseInt(details.data.membersCount) - 1;
       $('#membersCount').html(others);
+        app.venueDetails(app.venueId, function(details){
+          $("#venueName").html(details.name);
+        });
     }
     app.timers.roomDetails = setTimeout(function(){
       app.roomDetails();
@@ -169,10 +142,6 @@ app.appendMessage = function(message){
   if (message.welcome != null){
     s += "<div align=\"center\">*** " + message.welcome + " ***</div>";
   }else{
-    // s += "<img height=\"40\" class=\"avatar-"+message.from+"\">";
-    // s += " @ "
-    // s += " " + app.formatTime(message.sentAt);
-    // s += '<span style="display: block; ">' + message.message + '</span>';
     s += "<table>"
     s += "<tr>"
     s += "<td rowspan=\"2\">" + "<img height=\"50\" class=\"avatar-"+message.from+"\">"; + "</td>"
@@ -192,35 +161,39 @@ app.appendMessage = function(message){
   })
 }
 
-app.showLocations = function(){
+app.showVenues = function(){
   app.getLocation(function(lat, lon){
     app.client.action('venues', {lat: lat, lon: lon}, function(data){
-      $('#locationsList').html('')
+      $('#venuesList').html('')
       data.venues.forEach(function(l){
         html = ""
-        html += "<div class=\"locationListElement\">";
-        html += "<a onClick=\"app.startChat('"+l.id+"')\">" + l.name + "</a>"
-        html += "</div>";
-        $('#locationsList').append(html)
+        html += "<button class=\"btn btn-warning locationButton\" onClick=\"app.startChat('"+l.id+"')\">" + l.name + "</button>"
+        $('#venuesList').append(html)
       })
     });
   });
 }
 
-app.on('stage', function(stage){
+app.venueDetails = function(venueId, callback){
+  app.client.action('venueDetails', {venueId: venueId}, function(data){
+    callback(data.venue)
+  })
+}
+
+app.stageChanged = function(stage){
   if(stage === 2){
-    if(app.QueryString()['locationId'] != null){
-      app.startChat(app.QueryString()['locationId']);
+    if(app.QueryString()['venueId'] != null){
+      app.startChat(app.QueryString()['venueId']);
     }else{
-      app.showLocations();
+      app.showVenues();
     }
   }
   if(stage === 3){
-    if(app.locationId == null){
+    if(app.venueId == null){
       app.chageStage(2);
     }else{
       app.joinChat();
     }
   }
-});
+}
     

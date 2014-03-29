@@ -1,6 +1,6 @@
 exports.action = {
-  name:                   'roomAdd',
-  description:            'roomAdd',
+  name:                   'venueDetails',
+  description:            'venueDetails',
   blockedConnectionTypes: [],
   outputExample:          {},
   matchExtensionMimeType: false,
@@ -13,8 +13,10 @@ exports.action = {
   },
 
   run: function(api, connection, next){
-    api.chatRoom.add(connection.params.venueId, function(){
+    api.venue.details(connection.params.venueId, function(err, venue){
+      connection.error = err;
+      connection.response.venue = venue;
       next(connection, true);
-    });
+    })
   }
 };

@@ -7,9 +7,9 @@ exports.default = {
       //  Be sure that every server you run has a unique ID (which will happen when generated dynamically)
       //  id: 'myActionHeroServer',
       // A unique token to your application that servers will use to authenticate to each other
-      serverToken: 'change-me',
+      serverToken: '$GIWEG34ghWOIEGha4oiheowirs',
       // The welcome message seen by TCP and webSocket clients upon connection
-      welcomeMessage: 'Hello! Welcome to EarlyAgain',
+      welcomeMessage: 'Welcome to EarlyAgain',
       // The body message to accompany 404 (file not found) errors regarding flat files
       flatFileNotFoundMessage: 'Sorry, that file is not found :(',
       // The message to accompany 500 errors (internal server errors)
