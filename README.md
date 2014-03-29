@@ -1,9 +1,9 @@
-# My actionhero Project
+# EarlyAgain
 
-*visit www.actionherojs.com for more information*
+Earlyagain is an application which allows you to anonymously chat with people nearby.
+EarlyAgain is an example [actionherojs](www.actionherojs.com) application.
 
 ## TODO
 
-- google analytics
 - airbrake
 - new relic

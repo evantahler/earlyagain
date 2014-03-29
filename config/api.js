@@ -44,6 +44,7 @@ exports.default = {
       plugins: [
         // this is a list of plugin names
         // plugin still need to be included in `package.json` or the path defined in `api.config.general.paths.plugin`
+        'ah-newrelic-plugin'
       ],
       // hash containing chat rooms you wish to be created at server boot
       startingChatRooms: {

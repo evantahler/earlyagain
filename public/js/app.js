@@ -4,7 +4,6 @@ $( document ).ready(function() {
   app.connect();
 });
 
-app.events = {};
 app.timers = {};
 
 app.QueryString = function(){

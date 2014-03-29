@@ -13,7 +13,9 @@
   "dependencies": {
     "actionhero": "8.0.3",
     "grunt": "latest",
-    "request": "^2.34.0"
+    "request": "^2.34.0",
+    "ah-newrelic-plugin": "0.0.1",
+    "newrelic": "^1.4.0"
   },
   "devDependencies": {
     "mocha": "latest",
