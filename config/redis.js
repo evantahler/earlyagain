@@ -28,3 +28,16 @@ exports.test = {
     }
   }
 }
+
+exports.production = { 
+  redis: function(api){
+    return {
+      fake: false,
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+      password: process.env.REDIS_PASSWORD,
+      options: null,
+      database: 0
+    }
+  }
+}
