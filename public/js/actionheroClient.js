@@ -53,7 +53,7 @@
       retry: self.options.retry,
       timeout: self.options.timeout
     });
-    self.client.disable('websocket');
+    // self.client.disable('websocket');
 
     self.setupSubscription = self.client.subscribe(self.options.setupChannel, function(message){
       self.id = message.id;
