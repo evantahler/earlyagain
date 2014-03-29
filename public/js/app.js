@@ -121,9 +121,11 @@ app.roomDetails = function(){
     if(details.data != null){
       var others = parseInt(details.data.membersCount) - 1;
       $('#membersCount').html(others);
+      if( $("#venueName").html() == "X" ){
         app.venueDetails(app.venueId, function(details){
           $("#venueName").html(details.name);
         });
+      }
     }
     app.timers.roomDetails = setTimeout(function(){
       app.roomDetails();
