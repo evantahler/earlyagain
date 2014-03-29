@@ -49,7 +49,9 @@ app.connect = function(){
 
       app.loadAvatar(app.id, function(url){
         app.avatar = url;
-        $('.myAvatar').attr('src', app.avatar);
+        setTimeout(function(){
+          $('.myAvatar').attr('src', app.avatar);
+        }, 1001)
       });
     }
   });
