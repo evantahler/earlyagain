@@ -47,13 +47,17 @@ app.connect = function(){
         app.chageStage(1);
       }
 
-      app.loadAvatar(app.id, function(url){
-        app.avatar = url;
-        setTimeout(function(){
-          $('.myAvatar').attr('src', app.avatar);
-        }, 1001)
-      });
+      app.loadMyAvatar();
     }
+  });
+}
+
+app.loadMyAvatar = function(){
+  app.loadAvatar(app.id, function(url){
+    app.avatar = url;
+    setTimeout(function(){
+      $('.myAvatar').attr('src', app.avatar);
+    }, 100)
   });
 }
 
@@ -63,6 +67,9 @@ app.chageStage = function(stage){
   $('#stage' + stage).fadeIn();
   window.location.hash = "#" + stage;
   app.stageChanged(stage);
+  setTimeout(function(){
+    app.loadMyAvatar();
+  }, 1001)
 }
 
 app.avatars = {};
