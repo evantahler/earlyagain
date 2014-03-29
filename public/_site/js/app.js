@@ -123,7 +123,8 @@ app.startChat = function(locationId){
 app.joinChat = function(locationId){
   if(app.QueryString()['locationId'] == null){
     var parts = window.location.href;
-    window.location.href = parts.split("#")[0] + "?locationId=" + app.locationId + "#3";
+    var url = parts.split("#")[0] + "?locationId=" + app.locationId + "#3";
+    window.history.pushState("", "", url);
   }else{
     app.client.roomChange(app.locationId);
     app.roomDetails();
