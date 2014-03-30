@@ -168,7 +168,14 @@ app.appendMessage = function(message){
 
   app.loadAvatar(message.from, function(url){
     $('.avatar-' + message.from).attr('src', url);
-  })
+  });
+
+  if(message.from != app.id){
+    var audio = new Audio('/audio/button-11.mp3');
+  }else{
+    var audio = new Audio('/audio/button-19.mp3');
+  }
+  audio.play();
 }
 
 app.showVenues = function(){
