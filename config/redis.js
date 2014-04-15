@@ -1,7 +1,7 @@
 exports.default = { 
   redis: function(api){
     return {
-      fake: true,
+      package: 'fakeredis',
       host: '127.0.0.1',
       port: 6379,
       password: null,
@@ -13,13 +13,8 @@ exports.default = {
 
 exports.test = { 
   redis: function(api){
-    var toFakeRedis = false;
-    if(process.env.fakeredis == 'true'){
-      toFakeRedis = true;
-    }
-
     return {
-      'fake': toFakeRedis,
+      package: 'fakeredis',
       'host': '127.0.0.1',
       'port': 6379,
       'password': null,
@@ -32,7 +27,7 @@ exports.test = {
 exports.production = { 
   redis: function(api){
     return {
-      fake: false,
+      package: 'redis',
       host: process.env.REDIS_HOST,
       port: process.env.REDIS_PORT,
       password: process.env.REDIS_PASSWORD,

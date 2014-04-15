@@ -147,6 +147,7 @@ app.formatTime = function(timestamp){
 }
 
 app.appendMessage = function(message){
+
   var s = "";
   s += "<pre>"
   if (message.welcome != null){
@@ -170,7 +171,7 @@ app.appendMessage = function(message){
     $('.avatar-' + message.from).attr('src', url);
   });
 
-  if(message.from != app.id){
+  if(message.from != app.id && message.welcome == null){
     var audio = new Audio('/audio/button-11.mp3');
   }else{
     var audio = new Audio('/audio/button-19.mp3');

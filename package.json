@@ -6,12 +6,12 @@
   "engines": {
     "node": ">=0.8.0"
   },
-  "repositories": {
+  "repository": {
     "type": "git",
     "url": "git@github.com:evantahler/earlyagain.git"
   },
   "dependencies": {
-    "actionhero": "8.0.3",
+    "actionhero": "8.0.7",
     "grunt": "latest",
     "request": "^2.34.0",
     "ah-newrelic-plugin": "0.0.1",

@@ -29,7 +29,7 @@ exports.default = {
         //  Visitors can always visit /api and /public as normal
         rootEndpointType : 'file',
         // The header which will be returned for all flat file served from /public; defined in seconds
-        flatFileCacheDuration : 60,
+        flatFileCacheDuration : 60 * 60,
         // Settings for determining the id of an http(s) request (browser-fingerprint)
         fingerprintOptions : {
           cookieKey: 'sessionID',
