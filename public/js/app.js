@@ -173,10 +173,12 @@ app.appendMessage = function(message){
 
   if(message.from != app.id && message.welcome == null){
     var audio = new Audio('/audio/button-11.mp3');
-  }else{
+    audio.play();
+  }else if(message.welcome == null){
     var audio = new Audio('/audio/button-19.mp3');
+    audio.play();
   }
-  audio.play();
+  
 }
 
 app.showVenues = function(){

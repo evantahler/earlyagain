@@ -150,3 +150,12 @@ i {
 	font-weight: 300;
 	letter-spacing: 1px;
 }
+
+#venuesList {
+    padding: 10px;
+}
+
+.locationButton {
+    padding: 5px;
+    margin: 5px;
+}
